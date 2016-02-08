@@ -44,15 +44,16 @@ module hotend_fan() {
       }
     }
     // Vertical inner space.
+    translate([0,0,40])cube([20, 20, 12], center=true);
     intersection() {
-      cube([22, 100, 100], center=true);
+      cube([22, 100, 60], center=true);
       translate([0, -12, groove_height + 2])
         cylinder(r=16, h=40, $fn=6);
     }
     // Air funnel.
     difference() {
       translate([0, -1 - fan_offset, 20]) rotate([-90, 0, 0])
-        cylinder(r1=20, r2=0, h=25, $fn=36);
+        cylinder(r1=20, r2=0, h=16, $fn=36);
       cube([8, 40, 40], center=true);
     }
     for (a = [60:60:359]) {
